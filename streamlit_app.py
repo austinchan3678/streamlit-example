@@ -6,8 +6,8 @@ import requests
 from transformers import pipeline
 from bs4 import BeautifulSoup
 
-import pathlib
-import textwrap
+# import pathlib
+# import textwrap
 
 import google.generativeai as genai
 
@@ -38,9 +38,9 @@ userOffset = 0
 
 
 
-def to_markdown(text):
-  text = text.replace('•', '  *')
-  return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
+# def to_markdown(text):
+#   text = text.replace('•', '  *')
+#   return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
 
 GOOGLE_API_KEY='AIzaSyCbZYpjDDZoGwJ5RC7RHwz4v5_6d43LuS8'
 
@@ -62,7 +62,7 @@ def summarize(text):
     model = genai.GenerativeModel('gemini-pro')
     prompt = "Write a new review summarizing these reviews in 2-3 sentences in a professional tone without any point of view. Be specific to the restaurant. If applicable, recommend some dishes. Mention some positives and negatives:"
     response = model.generate_content(prompt + text )
-    to_markdown(response.text)
+    #to_markdown(response.text)
     st.write(response.text)
 
 
