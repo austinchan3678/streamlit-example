@@ -6,4 +6,7 @@ torch
 requests
 transformers
 bs4
-
+pathlib
+textwrap
+google.generativeai
+IPython
