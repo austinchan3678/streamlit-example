@@ -26,7 +26,6 @@ location = st.text_input('Location')
 numberOfResults = st.number_input('Results', min_value = 1, max_value = 5, value = 1)
 cost = st.number_input('Cost', min_value = 1, max_value = 4, value = 1)
 
-
 done = st.button("Done", use_container_width= True)
 reset = st.button("Reset", use_container_width=True) 
 
@@ -61,10 +60,10 @@ HEADERS = {'Authorization': 'bearer %s' % API_KEY}
 def summarize(text):
     model = genai.GenerativeModel('gemini-pro')
     prompt = "Write a new review summarizing these reviews in 2-3 sentences in a professional tone without any point of view. Be specific to the restaurant. If applicable, recommend some dishes. Mention some positives and negatives:"
+
     response = model.generate_content(prompt + text )
     #to_markdown(response.text)
     st.write(response.text)
-
 
 def getReviews(business_url):
    url = business_url
@@ -104,6 +103,9 @@ def search(term, limit, offset, location, price):
 
 
    for i in business_data['businesses']:
+        # business image: (need to add)
+        # print("Image url: " + i['image_url'])
+        # print("Address: " + i['location']['address1'])
         # st.write(i['url'])
         getReviews(i['url'])
 
