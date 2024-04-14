@@ -82,8 +82,9 @@ def getReviews(business_url):
        if lang_attribute != 'en':
            continue
        bigString += text_content
+       st.write(text_content)
        # Print the text content
-   summarize(text_content)
+   summarize(bigString)
        # st.write(text_content)
 
 
@@ -103,6 +104,7 @@ def search(term, limit, offset, location, price):
 
 
    for i in business_data['businesses']:
+        st.write(i['url'])
         getReviews(i['url'])
 
 
