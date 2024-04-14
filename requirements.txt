@@ -8,5 +8,5 @@ transformers
 bs4
 pathlib
 textwrap
-google.generativeai
+google
 IPython
