@@ -5,7 +5,7 @@ import streamlit as st
 import requests
 from transformers import pipeline
 from bs4 import BeautifulSoup
-
+from PIL import Image
 # import pathlib
 # import textwrap
 
@@ -13,21 +13,72 @@ import google.generativeai as genai
 
 from IPython.display import display
 from IPython.display import Markdown
-"""
-# YumSum!!
+# """
+# # YumSum!!
+# In the meantime, below is an example of what you can do with just a few lines of code:
+# """
+
+st.set_page_config(layout = "wide")
+
+class Restaurant:
+  def __init__(self, name, image_url, url, review_count, rating, price, address, phone, reviewsum):
+    self.name = name
+    self.image_url = image_url
+    self.url = url
+    self.review_count = review_count
+    self.rating = rating
+    self.price = price
+    self.address = address
+    self.phone = phone
+    self.reviewsum = reviewsum
 
 
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+def clear_form():
+	st.session_state["cuisine"] = ""
+	st.session_state["location"] = ""
+	st.session_state["results"] = 1
+	st.session_state["cost"] = 1
 
-cuisine = st.text_input('Cuisine')
-location = st.text_input('Location')
-numberOfResults = st.number_input('Results', min_value = 1, max_value = 5, value = 1)
-cost = st.number_input('Cost', min_value = 1, max_value = 4, value = 1)
+def callback():
+	show_review = True
 
-done = st.button("Done", use_container_width= True)
-reset = st.button("Reset", use_container_width=True) 
+header = st.container()
+cuisine, location, results, cost = st.columns(4)
+
+# title
+with header:
+	st.title('YumSum!')
+
+# text input 
+with cuisine:
+	cuisine = st.text_input("cuisine", key="cuisine")
+
+with location:
+	location = st.text_input("location", key="location")
+
+with results:
+	results = st.number_input("results", min_value=1, max_value=5, key= "results")
+
+with cost:
+	cost = st.number_input("cost", min_value=1, max_value=4, key= "cost")
+
+# generate and reset buttons
+if "show_review" not in st.session_state:
+	st.session_state.show_review = False
+
+generate = st.button("Generate", use_container_width = True, on_click = callback)
+reset = st.button("Reset", use_container_width = True, on_click = clear_form)
+
+#-----#
+     
+# cuisine = st.text_input('Cuisine')
+# location = st.text_input('Location')
+# numberOfResults = st.number_input('Results', min_value = 1, max_value = 5, value = 1)
+# cost = st.number_input('Cost', min_value = 1, max_value = 4, value = 1)
+
+# done = st.button("Done", use_container_width= True)
+# reset = st.button("Reset", use_container_width=True) 
 
 
 
@@ -63,58 +114,76 @@ def summarize(text):
 
     response = model.generate_content(prompt + text )
     #to_markdown(response.text)
-    st.write(response.text)
+    # st.write(response.text)
+    return(response.text)
 
 def getReviews(business_url):
-   url = business_url
-   response = requests.get(url)
-   html_content = response.text
+    url = business_url
+    response = requests.get(url)
+    html_content = response.text
+    soup = BeautifulSoup(html_content, 'html.parser')
 
-   soup = BeautifulSoup(html_content, 'html.parser')
+    target_spans = soup.find_all('span', class_='raw__09f24__T4Ezm')
 
-   target_spans = soup.find_all('span', class_='raw__09f24__T4Ezm')
+    bigString = ""
+    for span in target_spans:
+        text_content = span.text.strip()
+        lang_attribute = span.attrs.get('lang', None)
+        if lang_attribute != 'en':
+            continue
+        bigString += text_content
+    summarizedReview = summarize(bigString)
+    return summarizedReview
 
-   bigString = ""
-   for span in target_spans:
-       text_content = span.text.strip()
-       lang_attribute = span.attrs.get('lang', None)
-       if lang_attribute != 'en':
-           continue
-       bigString += text_content
-       # st.write(text_content)
-       # Print the text content
-   summarize(bigString)
-       # st.write(text_content)
 
+restaurantList = []
 
 def search(term, limit, offset, location, price):
-   PARAMETERS = {'term': term,
-               'limit': limit,
-               'offset': offset,
-               'radius': 16093, # 10 miles already set
-               'location': location,
-               'price': price
-           }
-   response = requests.get(url = ENDPOINT,
-                           params = PARAMETERS,
-                           headers = HEADERS)
+    PARAMETERS = {'term': term,
+                'limit': limit,
+                'offset': offset,
+                'radius': 16093, # 10 miles already set
+                'location': location,
+                'price': price
+                }
+    response = requests.get(url = ENDPOINT,
+                            params = PARAMETERS,
+                            headers = HEADERS)
 
-   business_data = response.json()
+    business_data = response.json()
+
+    for i in business_data['businesses']:
+        reviewsum = getReviews(i['url'])
+        restaurantList.append(Restaurant(i['name'], i['image_url'], i['url'], i['review_count'], i['rating'], i['price'], i['location']['address1'], i['phone'], reviewsum))
+
+# reviews
+review1 = st.container(border = True)
+review2 = st.container(border = True)
+review3 = st.container(border = True)
+review4 = st.container(border = True)
+review5 = st.container(border = True)
+
+arr = [review1, review2, review3, review4, review5]
+
+# if generate is pressed
+if generate or st.session_state.show_review:
+	search(cuisine, results, 0, location, cost)
+	for i in range(0, results):
+         with arr[i]:
+            with st.container(border=True):
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.header(restaurantList[i].name)
+                    st.image(restaurantList[i].image_url)
+
+                with col2:
+                    container = st.container(border=True)
+                    st.write(restaurantList[i].reviewsum)
 
 
-   for i in business_data['businesses']:
-        # business image: (need to add)
-        # print("Image url: " + i['image_url'])
-        # print("Address: " + i['location']['address1'])
-        # st.write(i['url'])
-        getReviews(i['url'])
+                  
+			# st.write(restaurantList[i].name)
+			# st.image(restaurantList[i].image_url, width=200)
+			# with st.expander("Review"):
+			# 	st.write(restaurantList[i].reviewsum)
 
-
-
-
-
-if(done):
-    st.write("You want ", numberOfResults)
-    st.write(location)
-    st.write(cuisine)
-    search(cuisine, numberOfResults, 0, location, cost)

@@ -8,3 +8,4 @@ transformers
 bs4
 google.generativeai
 IPython
+pillow
