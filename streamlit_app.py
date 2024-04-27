@@ -187,7 +187,7 @@ with c2:
                                 dollars = '$$$'
                             if restaurantList[i].cost == 4:
                                 dollars = '$$$$'
-                            st.header(str(restaurantList[i].name, divider='gray')
+                            st.header(str(restaurantList[i].name, divider='gray'))
                             st.write(str(restaurantList[i].rating) + ' :star:' + '-' + dollars + '-' + restaurantList[i].address)
 
                             mc1, mc2 = st.columns(2)
