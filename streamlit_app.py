@@ -151,7 +151,7 @@ with c2:
 
     # if generate is pressed
     if generate or st.session_state.show_review:
-        try:
+        #try:
             search(cuisine, results, 0, location, cost)
             for i in range(0, results):
                 with arr[i]:
@@ -181,8 +181,8 @@ with c2:
                             sc1, sc2, sc3 = st.columns([1,6,1])
                             with sc2:
                                 st.write(restaurantList[i].reviewsum)
-        except:
-            st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
+        #except:
+        #    st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
         #test 
                         
                     # st.write(restaurantList[i].name)
