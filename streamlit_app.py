@@ -163,7 +163,7 @@ with c2:
 
                         with col2:
                             st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name, divider='gray')
-                            st.write(restaurantList[i].address + '  -  ' + str(restaurantList[i].cost))
+                            st.write(restaurantList[i].address)
 
                             mc1, mc2 = st.columns(2)
                             mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
