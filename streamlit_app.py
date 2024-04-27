@@ -170,7 +170,7 @@ with c2:
                         st.header(restaurantList[i].name, divider= 'gray')
                         st.write("\n")
                         st.write(restaurantList[i].address)
-                        mapsaddr = restaurantList[i].name + restaurantList[i].address
+                        mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
                         mapsaddr = mapsaddr.replace(" ", "+")
                         st.write(mapsaddr)
                         googlemaps = "https://www.google.com/maps/search/" + mapsaddr
