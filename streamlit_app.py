@@ -6,8 +6,8 @@ import requests
 from transformers import pipeline
 from bs4 import BeautifulSoup
 from PIL import Image
-# import pathlib
-# import textwrap
+from IPython.display import display
+
 
 import google.generativeai as genai
 
