@@ -20,7 +20,7 @@ from IPython.display import Markdown
 
 st.set_page_config(layout = "wide")
 
-c1, c2, c3 = st.columns([1, 3, 1], gap="small")
+c1, c2, c3 = st.columns([1, 4, 1], gap="small")
 with c2:
     st.write('HELLOOO')
 
