@@ -162,8 +162,14 @@ with c2:
                             st.image(restaurantList[i].image_url)
 
                         with col2:
-                            st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name, divider='gray')
-                            st.write(restaurantList[i].address)
+                            st.header("  " + restaurantList[i].name, divider='gray')
+                            pc1, pc2 = st.columns(2)
+                            with pc1:
+                                st.write(str(restaurantList[i].rating) + ' :star:')
+                            with pc2:
+                                st.write("     " + str(restaurantList[i].price))
+
+                            st.write(restaurantList[i].address + '  -  ' + str(restaurantList[i].price))
 
                             mc1, mc2 = st.columns(2)
                             mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
