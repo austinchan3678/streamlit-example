@@ -98,15 +98,16 @@ with c2:
     HEADERS = {'Authorization': 'bearer %s' % API_KEY}
 
 
-    def summarize(text):
+    def summarize(text, name):
         model = genai.GenerativeModel('gemini-pro')
-        prompt = "Write a new review summarizing these reviews in 2-3 sentences in a professional tone without any point of view. Be specific to the restaurant. If applicable, recommend some dishes. Mention some positives and negatives:"
+        nameText = "Also state the name of the restaurant which is " + name
+        prompt = "Write a new review summarizing these reviews in 2-3 sentences in a professional tone without any point of view. Be specific to the restaurant. If applicable, recommend some dishes. Mention some positives and negatives." + nameText
 
         response = model.generate_content(prompt + text )
 
         return(response.text)
 
-    def getReviews(business_url):
+    def getReviews(business_url,name):
         url = business_url
         response = requests.get(url)
         html_content = response.text
@@ -121,7 +122,7 @@ with c2:
             if lang_attribute != 'en':
                 continue
             bigString += text_content
-        summarizedReview = summarize(bigString)
+        summarizedReview = summarize(bigString,name)
         return summarizedReview
 
 
@@ -142,7 +143,7 @@ with c2:
         business_data = response.json()
 
         for i in business_data['businesses']:
-            reviewsum = getReviews(i['url'])
+            reviewsum = getReviews(i['url'],i['name'])
             restaurantList.append(Restaurant(i['name'], i['image_url'], i['url'], i['review_count'], i['rating'], i['price'], i['location']['address1'], i['phone'], reviewsum))
 
     # reviews
@@ -167,7 +168,7 @@ with c2:
 
                     with col2:
                         st.header(restaurantList[i].name)
-                        
+
                         container = st.container(border=True)
                         st.write(restaurantList[i].reviewsum)
 
