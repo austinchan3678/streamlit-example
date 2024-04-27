@@ -170,6 +170,13 @@ with c2:
                         st.header(restaurantList[i].name, divider= 'gray')
                         st.write("\n")
                         st.write(restaurantList[i].address)
+                        mapsaddr = name + address
+                        mapsaddr = mapsaddr.replace(" ", "+")
+                        st.write(mapsaddr)
+                        googlemaps = "https://www.google.com/maps/search/" + mapsaddr
+                        #phresh+teas+5599+hollister+avenue/
+                        https://www.google.com/maps/search/phresh+teas+5599+hollister+avenue/
+                        st.link_button("Open in Google Maps", url, *, help=None, type="secondary", disabled=False, use_container_width=False)
 
                         container = st.container(border=True)
                         st.write(restaurantList[i].reviewsum)
