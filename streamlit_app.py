@@ -164,7 +164,7 @@ with c2:
                         with col2:
                             st.header("⠀" + restaurantList[i].name, divider='gray')
                             #st.text(str(restaurantList[i].rating) + ' :star:   (' + str(restaurantList[i].review_count) + ' reviews)' + '$    -    $' + str(restaurantList[i].price))
-                            st.write("⠀⠀" + str(restaurantList[i].rating) + ' :star:⠀(' + str(restaurantList[i].review_count) + ' reviews)' + '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀' + str(restaurantList[i].price))
+                            st.write("⠀⠀" + str(restaurantList[i].rating) + ' :star:⠀(' + str(restaurantList[i].review_count) + ' reviews)' + '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀' + str(restaurantList[i].price))
                             #st.text(':telephone_receiver:: ' + restaurantList[i].phone + '    -    ' + restaurantList[i].address)
                             st.write(':telephone_receiver:: ' + restaurantList[i].phone + '⠀⠀⠀⠀' + restaurantList[i].address)
                             mc1, mc2 = st.columns(2)
