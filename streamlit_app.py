@@ -176,7 +176,9 @@ with c2:
                             st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=True)
                         st.divider()
                         container = st.container(border=True)
-                        st.write(restaurantList[i].reviewsum)
+                        sc1, sc2, sc3 = st.columns(1,6,1)
+                        with sc2:
+                            st.write(restaurantList[i].reviewsum)
 
     #test 
                     
