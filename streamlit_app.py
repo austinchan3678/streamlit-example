@@ -167,8 +167,8 @@ with c2:
                             with pc1:
                                 st.write(str(restaurantList[i].rating) + ' :star:')
                             with pc2:
-                                dollars = str(restaurantList[i].price)
-                                st.markdown(f':green[    {dollars}]')
+                                dollars = "           " + str(restaurantList[i].price)
+                                st.markdown(f':green[{dollars}]')
                             st.write(restaurantList[i].address)
 
                             mc1, mc2 = st.columns(2)
