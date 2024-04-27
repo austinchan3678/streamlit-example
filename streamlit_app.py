@@ -36,79 +36,8 @@ def clear_form():
 	st.session_state["results"] = 1
 	st.session_state["cost"] = ""
 
-def loading():
-    placeholder = st.empty()
-    with placeholder:
-        c1, c2, c3 = st.columns([5,1,3])
-        with c2:
-            st.image("loading.gif")
-
-def notloading():
-
-    # reviews
-    review1 = st.container(border = True)
-    review2 = st.container(border = True)
-    review3 = st.container(border = True)
-    review4 = st.container(border = True)
-    review5 = st.container(border = True)
-
-    arr = [review1, review2, review3, review4, review5]
-
-    # if generate is pressed
-    if generate or st.session_state.show_review:
-        try:
-            show_review = False
-            placeholder = st.empty()
-            with placeholder:
-                search(cuisine, results, 0, location, cost)
-                for i in range(0, results):
-                    with arr[i]:
-                        with st.container(border=True):
-                            #st.header(restaurantList[i].name)
-                            col1, col2 = st.columns(2)
-                            with col1:
-                                st.image(restaurantList[i].image_url)
-
-                            with col2:
-                                st.header("⠀" + restaurantList[i].name, divider='gray')
-                                #st.text(str(restaurantList[i].rating) + ' :star:   (' + str(restaurantList[i].review_count) + ' reviews)' + '$    -    $' + str(restaurantList[i].price))
-                                st.write("⠀⠀" + str(restaurantList[i].rating) + ' :star:⠀(' + str(restaurantList[i].review_count) + ' reviews)' + '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀' + str(restaurantList[i].price))
-                                #st.text(':telephone_receiver:: ' + restaurantList[i].phone + '    -    ' + restaurantList[i].address)
-                                st.write("⠀⠀" + restaurantList[i].phone + ', ' + restaurantList[i].address)
-                                mc1, mc2 = st.columns(2)
-                                mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
-                                mapsaddr = mapsaddr.replace(" ", "+")
-                                mapsaddr = mapsaddr.replace(",", "")
-                                googlemaps = "https://www.google.com/maps/search/" + mapsaddr
-                                applemaps = "http://maps.apple.com/?q=" + mapsaddr
-                                with mc1:
-                                    st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=True)
-                                with mc2:
-                                    st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=True)
-
-                                sc1, sc2, sc3 = st.columns([1,20,1])
-                                with sc2:
-                                    st.write(restaurantList[i].reviewsum)
-            placeholder.empty()
-
-        except:
-           st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
-        #test 
-                        
-                    # st.write(restaurantList[i].name)
-                    # st.image(restaurantList[i].image_url, width=200)
-                    # with st.expander("Review"):
-                    # 	st.write(restaurantList[i].reviewsum)
-
-
-
-
-
-
 def callback():
-    loading()
-    show_review = True
-    notloading()
+	show_review = True
 
 #
 # left_co, cent_co,last_co = st.columns(3)
@@ -211,4 +140,53 @@ with c2:
             reviewsum = getReviews(i['url'],i['name'])
             restaurantList.append(Restaurant(i['name'], i['image_url'], i['url'], i['review_count'], i['rating'], i['price'], i['location']['address1'] + ", " + i['location']['city'], i['phone'], reviewsum))
 
+    # reviews
+    review1 = st.container(border = True)
+    review2 = st.container(border = True)
+    review3 = st.container(border = True)
+    review4 = st.container(border = True)
+    review5 = st.container(border = True)
+
+    arr = [review1, review2, review3, review4, review5]
+
+    # if generate is pressed
+    if generate or st.session_state.show_review:
+        try:
+            search(cuisine, results, 0, location, cost)
+            for i in range(0, results):
+                with arr[i]:
+                    with st.container(border=True):
+                        #st.header(restaurantList[i].name)
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            st.image(restaurantList[i].image_url)
+
+                        with col2:
+                            st.header("⠀" + restaurantList[i].name, divider='gray')
+                            #st.text(str(restaurantList[i].rating) + ' :star:   (' + str(restaurantList[i].review_count) + ' reviews)' + '$    -    $' + str(restaurantList[i].price))
+                            st.write("⠀⠀" + str(restaurantList[i].rating) + ' :star:⠀(' + str(restaurantList[i].review_count) + ' reviews)' + '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀' + str(restaurantList[i].price))
+                            #st.text(':telephone_receiver:: ' + restaurantList[i].phone + '    -    ' + restaurantList[i].address)
+                            st.write("⠀⠀" + restaurantList[i].phone + ', ' + restaurantList[i].address)
+                            mc1, mc2 = st.columns(2)
+                            mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
+                            mapsaddr = mapsaddr.replace(" ", "+")
+                            mapsaddr = mapsaddr.replace(",", "")
+                            googlemaps = "https://www.google.com/maps/search/" + mapsaddr
+                            applemaps = "http://maps.apple.com/?q=" + mapsaddr
+                            with mc1:
+                                st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=True)
+                            with mc2:
+                                st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=True)
+
+                            sc1, sc2, sc3 = st.columns([1,20,1])
+                            with sc2:
+                                st.write(restaurantList[i].reviewsum)
+        except:
+           st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
+        #test 
+                        
+                    # st.write(restaurantList[i].name)
+                    # st.image(restaurantList[i].image_url, width=200)
+                    # with st.expander("Review"):
+                    # 	st.write(restaurantList[i].reviewsum)
 
