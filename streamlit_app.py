@@ -73,9 +73,8 @@ with c2:
 
     with cost:
         temp = st.select_slider("Cost", options=('$', '$$', '$$$', '$$$$'))
-        st.write(len(temp))
         cost = len(temp)
-
+    st.divider()
     # generate and reset buttons
     if "show_review" not in st.session_state:
         st.session_state.show_review = False
