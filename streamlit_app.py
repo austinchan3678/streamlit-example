@@ -18,7 +18,7 @@ from IPython.display import Markdown
 # In the meantime, below is an example of what you can do with just a few lines of code:
 # """
 
-st.set_page_config(layout = "wide")
+# st.set_page_config(layout = "wide")
 
 class Restaurant:
   def __init__(self, name, image_url, url, review_count, rating, price, address, phone, reviewsum):
@@ -43,12 +43,21 @@ def clear_form():
 def callback():
 	show_review = True
 
+
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+    ima = st.image('https://r74.cooltext.com/rendered/cooltext456508024606712.gif', width=500)
+    st.image('https://r74.cooltext.com/rendered/cooltext456508024606712.gif', width=500)
+
+
+
 header = st.container()
 cuisine, location, results, cost = st.columns(4)
 
 # title
-with header:
-	st.title('YumSum!')
+# with header:
+# 	#st.title('YumSum!')
+#     st.image('https://r74.cooltext.com/rendered/cooltext456508024606712.gif', width = 1000)
 
 # text input 
 with cuisine:
@@ -70,34 +79,11 @@ if "show_review" not in st.session_state:
 generate = st.button("Generate", use_container_width = True, on_click = callback)
 reset = st.button("Reset", use_container_width = True, on_click = clear_form)
 
-#-----#
-     
-# cuisine = st.text_input('Cuisine')
-# location = st.text_input('Location')
-# numberOfResults = st.number_input('Results', min_value = 1, max_value = 5, value = 1)
-# cost = st.number_input('Cost', min_value = 1, max_value = 4, value = 1)
-
-# done = st.button("Done", use_container_width= True)
-# reset = st.button("Reset", use_container_width=True) 
-
-
-
 userOffset = 0
-# summarizer.search(cuisine, numberOfResults, userOffset, location, cost)
-
-
-
-
-# def to_markdown(text):
-#   text = text.replace('•', '  *')
-#   return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
 
 GOOGLE_API_KEY='AIzaSyCbZYpjDDZoGwJ5RC7RHwz4v5_6d43LuS8'
 
 genai.configure(api_key=GOOGLE_API_KEY)
-
-
-
 
 
 # -------- #
@@ -113,8 +99,7 @@ def summarize(text):
     prompt = "Write a new review summarizing these reviews in 2-3 sentences in a professional tone without any point of view. Be specific to the restaurant. If applicable, recommend some dishes. Mention some positives and negatives:"
 
     response = model.generate_content(prompt + text )
-    #to_markdown(response.text)
-    # st.write(response.text)
+
     return(response.text)
 
 def getReviews(business_url):
@@ -171,16 +156,16 @@ if generate or st.session_state.show_review:
 	for i in range(0, results):
          with arr[i]:
             with st.container(border=True):
+                #st.header(restaurantList[i].name)
                 col1, col2 = st.columns(2)
                 with col1:
-                    st.header(restaurantList[i].name)
                     st.image(restaurantList[i].image_url)
 
                 with col2:
                     container = st.container(border=True)
                     st.write(restaurantList[i].reviewsum)
 
-
+#test 
                   
 			# st.write(restaurantList[i].name)
 			# st.image(restaurantList[i].image_url, width=200)
