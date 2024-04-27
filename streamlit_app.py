@@ -162,7 +162,7 @@ with c2:
                             st.image(restaurantList[i].image_url)
 
                         with col2:
-                            st.header("⠀⠀" + restaurantList[i].name, divider='gray')
+                            st.header("⠀" + restaurantList[i].name, divider='gray')
                             #st.text(str(restaurantList[i].rating) + ' :star:   (' + str(restaurantList[i].review_count) + ' reviews)' + '$    -    $' + str(restaurantList[i].price))
                             st.write("⠀⠀" + str(restaurantList[i].rating) + ' :star:⠀(' + str(restaurantList[i].review_count) + ' reviews)' + '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀' + str(restaurantList[i].price))
                             #st.text(':telephone_receiver:: ' + restaurantList[i].phone + '    -    ' + restaurantList[i].address)
