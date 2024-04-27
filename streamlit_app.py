@@ -51,8 +51,7 @@ def callback():
 
 c1, c2, c3 = st.columns([1, 4, 1], gap="small")
 with c2:
-
-    st.title('YumSum')
+    st.image('/workspaces/streamlit-example/yumsum.png')
 
     header = st.container()
     cuisine, location, results, cost = st.columns(4)
@@ -166,9 +165,9 @@ with c2:
                         st.image(restaurantList[i].image_url)
 
                     with col2:
-                        st.header(restaurantList[i].name, divider= 'gray')
+                        st.header(str(restaurantList[i].rating) + ':star:' + '  -  ' + restaurantList[i].name, divider= 'gray')
 
-                        st.write(restaurantList[i].address + ' - ' +  str(restaurantList[i].rating) + ':star:')
+                        st.write(restaurantList[i].address)
 
                         mc1, mc2 = st.columns(2)
                         mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
