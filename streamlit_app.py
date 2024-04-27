@@ -68,8 +68,25 @@ with c2:
         results = st.number_input("Results", min_value=1, max_value=5, key= "results")
 
     with cost:
-        temp = st.select_slider("Maximum Cost", options=('$', '$$', '$$$', '$$$$'))
+        
+        temp = st.select_slider("Maximum Cost", options=('$', '$$', '$$$', '$$$$'),value=('$','$$'))
         cost = len(temp)
+        costarray = []
+        if cost == 1:
+            costarray.append(1)
+        if cost == 2:
+            costarray.append(1)
+            costarray.append(2)
+        if cost == 3:
+            costarray.append(1)
+            costarray.append(2)
+            costarray.append(3)
+        if cost == 4:
+            costarray.append(1)
+            costarray.append(2)
+            costarray.append(3)
+            costarray.append(4)
+
     # generate and reset buttons
     if "show_review" not in st.session_state:
         st.session_state.show_review = False
