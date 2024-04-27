@@ -73,6 +73,7 @@ with c2:
 
     with cost:
         temp = st.select_slider("Cost", options=('$', '$$', '$$$', '$$$$'))
+        st.write(len(temp))
         cost = len(temp)
 
     # generate and reset buttons
