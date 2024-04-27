@@ -69,7 +69,7 @@ with c2:
 
     with cost:
         
-        temp = st.select_slider("Maximum Cost", options=('$', '$$', '$$$', '$$$$'),value=('$','$$'))
+        temp = st.select_slider("Cost", options=('$', '$$', '$$$', '$$$$'),value=('$','$$'))
         cost = len(temp)
         costarray = []
         if cost == 1:
@@ -179,8 +179,16 @@ with c2:
                             st.image(restaurantList[i].image_url)
 
                         with col2:
+                            if restaurantList[i].cost == 1:
+                                dollars = '$'
+                            if restaurantList[i].cost == 2:
+                                dollars = '$$'
+                            if restaurantList[i].cost == 3:
+                                dollars = '$$$'
+                            if restaurantList[i].cost == 4:
+                                dollars = '$$$$'
                             st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name, divider='gray')
-                            st.write(restaurantList[i].address)
+                            st.write(str(restaurantList[i].rating) + ' :star:' + '  -  ' + dollars + '  -  ' + restaurantList[i].address)
 
                             mc1, mc2 = st.columns(2)
                             mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
