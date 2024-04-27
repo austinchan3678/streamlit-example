@@ -168,6 +168,8 @@ with c2:
 
                     with col2:
                         st.header(restaurantList[i].name)
+                        st.write("\n")
+                        st.write(restaurantList[i].address)
 
                         container = st.container(border=True)
                         st.write(restaurantList[i].reviewsum)
