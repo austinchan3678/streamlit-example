@@ -128,7 +128,7 @@ with c2:
                     'offset': offset,
                     'radius': 16093, # 10 miles already set
                     'location': location,
-                    'price': price
+                    'price': [1,2,3,4]
                     }
         response = requests.get(url = ENDPOINT,
                                 params = PARAMETERS,
@@ -163,7 +163,7 @@ with c2:
 
                         with col2:
                             st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name, divider='gray')
-                            st.write(restaurantList[i].address)
+                            st.write(restaurantList[i].address + '  -  ' + restaurantList[i].cost)
 
                             mc1, mc2 = st.columns(2)
                             mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
