@@ -165,7 +165,7 @@ with c2:
                             st.header("  " + restaurantList[i].name, divider='gray')
 
                             st.write(str(restaurantList[i].rating) + ' :star:   (' + str(restaurantList[i].review_count) + ' reviews)' + ',   ' + str(restaurantList[i].price))
-                            st.write(':telephone_receiver::' + restaurantList[i].phone + ', ' + restaurantList[i].address)
+                            st.write(':telephone_receiver:: ' + restaurantList[i].phone + '    -    ' + restaurantList[i].address)
                             mc1, mc2 = st.columns(2)
                             mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
                             mapsaddr = mapsaddr.replace(" ", "+")
@@ -176,10 +176,10 @@ with c2:
                                 st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=True)
                             with mc2:
                                 st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=True)
-                            st.divider()
-                            container = st.container(border=True)
-                            sc1, sc2, sc3 = st.columns([1,8,1])
-                            with sc2:
+                            container = st.container(border=false)
+                            with container:
+                            # sc1, sc2, sc3 = st.columns([1,8,1])
+                            # with sc2:
                                 st.write(restaurantList[i].reviewsum)
         except:
            st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
