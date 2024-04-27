@@ -167,7 +167,7 @@ with c2:
                         st.image(restaurantList[i].image_url)
 
                     with col2:
-                        st.header(restaurantList[i].name)
+                        st.header(restaurantList[i].name, divider= 'gray')
                         st.write("\n")
                         st.write(restaurantList[i].address)
 
