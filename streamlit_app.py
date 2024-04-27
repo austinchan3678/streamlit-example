@@ -181,7 +181,7 @@ with c2:
                             with sc2:
                                 st.write(restaurantList[i].reviewsum)
         except:
-            st.write('error! reset')
+            st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
         #test 
                         
                     # st.write(restaurantList[i].name)
