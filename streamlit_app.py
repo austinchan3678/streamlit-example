@@ -171,8 +171,7 @@ with c2:
                         with cc1:
                             st.write(restaurantList[i].address)
                         with cc2:
-                            starreview = restaurantList[i].rating
-                            #+ ':star:'
+                            starreview = str(restaurantList[i].rating) + ':star:'
                             st.write(starreview)
                         mc1, mc2 = st.columns(2)
                         mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
