@@ -3,7 +3,7 @@ import requests
 from transformers import pipeline
 from bs4 import BeautifulSoup
 import streamlit_nested_layout
-
+import random
 import google.generativeai as genai
 
 from IPython.display import display
@@ -14,7 +14,7 @@ from IPython.display import Markdown
 # """
 
 st.set_page_config(layout = "wide")
-
+random.seed()
 
 class Restaurant:
   def __init__(self, name, image_url, url, review_count, rating, price, address, phone, reviewsum):
@@ -152,7 +152,7 @@ with c2:
     # if generate is pressed
     if generate or st.session_state.show_review:
         try:
-            search(cuisine, results, 0, location, cost)
+            search(cuisine, results, random.randint(0, 10), location, cost)
             for i in range(0, results):
                 with arr[i]:
                     with st.container(border=True):

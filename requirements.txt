@@ -6,6 +6,7 @@ torch
 requests
 transformers
 bs4
+random
 google.generativeai
 IPython
 pillow
