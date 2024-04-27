@@ -14,7 +14,7 @@ from IPython.display import Markdown
 # """
 
 st.set_page_config(layout = "wide")
-#random.seed()
+random.seed()
 
 class Restaurant:
   def __init__(self, name, image_url, url, review_count, rating, price, address, phone, reviewsum):
@@ -39,23 +39,12 @@ def clear_form():
 def callback():
 	show_review = True
 
-#
-# left_co, cent_co,last_co = st.columns(3)
-# with cent_co:
-#     ima = st.image('https://r74.cooltext.com/rendered/cooltext456508024606712.gif', width=500)
-#     st.image('https://r74.cooltext.com/rendered/cooltext456508024606712.gif', width=500)
-
 c1, c2, c3 = st.columns([1, 4, 1], gap="small")
 with c2:
     st.image('yumsum(3).png')
     st.divider()
     header = st.container()
     cuisine, location, results, cost = st.columns(4)
-
-    # title
-    # with header:
-    # 	#st.title('YumSum!')
-    #     st.image('https://r74.cooltext.com/rendered/cooltext456508024606712.gif', width = 1000)
 
     # text input 
     with cuisine:
