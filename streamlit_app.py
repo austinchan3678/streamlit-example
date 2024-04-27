@@ -178,6 +178,7 @@ with c2:
                             st.image(restaurantList[i].image_url)
 
                         with col2:
+                            dollars = ''
                             if restaurantList[i].cost == 1:
                                 dollars = '$'
                             if restaurantList[i].cost == 2:
@@ -187,7 +188,8 @@ with c2:
                             if restaurantList[i].cost == 4:
                                 dollars = '$$$$'
                             st.header(str(restaurantList[i].name, divider='gray'))
-                            st.write(str(restaurantList[i].rating) + ' :star:' + '-' + dollars + '-' + restaurantList[i].address)
+                            #st.write(str(restaurantList[i].rating) + ' :star:' + '-' + dollars + '-' + restaurantList[i].address)
+                            st.write(restaurantList[i].address)
 
                             mc1, mc2 = st.columns(2)
                             mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
