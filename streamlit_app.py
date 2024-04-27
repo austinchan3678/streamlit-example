@@ -42,6 +42,7 @@ def callback():
 c1, c2, c3 = st.columns([1, 4, 1], gap="small")
 with c2:
     st.image('yumsum(3).png')
+    st.write('What is YumSum? YumSum is a tool we made that takes all the hard work out of restaurant searching! Just input what food you would like to eat and where and YumSum will find restaurants and summarize their reviews for you! Recognizing most terms, like "Burrito" or "Chicken" or "Japanese Food" at "Goleta" or "NYC" or "Hawaii", YumSum is the most convenient way to choose what to eat!')
     st.divider()
     header = st.container()
     cuisine, location, results, cost = st.columns(4)
@@ -57,8 +58,16 @@ with c2:
         results = st.number_input("Results", min_value=1, max_value=5, key= "results")
 
     with cost:
-        temp = st.select_slider("Cost", options=('$', '$$', '$$$', '$$$$'))
-        cost = len(temp)
+        c = [1]
+        temp = st.select_slider("Maximum Cost", options=('$', '$$', '$$$', '$$$$'))
+        if temp == '$':
+            c = [1]
+        if temp == '$$':
+            c = [1,2]
+        if temp == '$$$':
+            c = [1,2,3]
+        if temp == '$$$$':
+            c = [1,2,3,4]
     # generate and reset buttons
     if "show_review" not in st.session_state:
         st.session_state.show_review = False
@@ -141,9 +150,9 @@ with c2:
     # if generate is pressed
     if generate or st.session_state.show_review:
 
-        search(cuisine, results, random.randint(1, 4), location, cost)
+        search(cuisine, results, random.randint(1, 4), location, c)
         if len(restaurantList) == 0:
-            search(cuisine, results, 0, location, cost)
+            search(cuisine, results, 0, location, c)
         try:
             for i in range(0, results):
                 with arr[i]:
