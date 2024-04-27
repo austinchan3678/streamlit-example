@@ -68,24 +68,8 @@ with c2:
         results = st.number_input("Results", min_value=1, max_value=5, key= "results")
 
     with cost:
-        
-        temp = st.select_slider("Cost", options=('$', '$$', '$$$', '$$$$'),value=('$','$$'))
-        costarray = []
-        if cost == 1:
-            costarray.append(1)
-        if cost == 2:
-            costarray.append(1)
-            costarray.append(2)
-        if cost == 3:
-            costarray.append(1)
-            costarray.append(2)
-            costarray.append(3)
-        if cost == 4:
-            costarray.append(1)
-            costarray.append(2)
-            costarray.append(3)
-            costarray.append(4)
-
+        temp = st.select_slider("Maximum Cost", options=('$', '$$', '$$$', '$$$$'))
+        cost = len(temp)
     # generate and reset buttons
     if "show_review" not in st.session_state:
         st.session_state.show_review = False
@@ -144,7 +128,7 @@ with c2:
                     'offset': offset,
                     'radius': 16093, # 10 miles already set
                     'location': location,
-                    'price': 1
+                    'price': price
                     }
         response = requests.get(url = ENDPOINT,
                                 params = PARAMETERS,
@@ -168,7 +152,7 @@ with c2:
     # if generate is pressed
     if generate or st.session_state.show_review:
         try:
-            search(cuisine, results, 0, location, costarray)
+            search(cuisine, results, 0, location, cost)
             for i in range(0, results):
                 with arr[i]:
                     with st.container(border=True):
@@ -178,17 +162,7 @@ with c2:
                             st.image(restaurantList[i].image_url)
 
                         with col2:
-                            # dollars = ''
-                            # if restaurantList[i].cost == 1:
-                            #     dollars = '$'
-                            # if restaurantList[i].cost == 2:
-                            #     dollars = '$$'
-                            # if restaurantList[i].cost == 3:
-                            #     dollars = '$$$'
-                            # if restaurantList[i].cost == 4:
-                            #     dollars = '$$$$'
-                            st.header(str(restaurantList[i].name, divider='gray'))
-                            #st.write(str(restaurantList[i].rating) + ' :star:' + '-' + dollars + '-' + restaurantList[i].address)
+                            st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name, divider='gray')
                             st.write(restaurantList[i].address)
 
                             mc1, mc2 = st.columns(2)
