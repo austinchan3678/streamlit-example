@@ -18,7 +18,11 @@ from IPython.display import Markdown
 # In the meantime, below is an example of what you can do with just a few lines of code:
 # """
 
-# st.set_page_config(layout = "wide")
+st.set_page_config(layout = "wide")
+
+c1, c2, c3 = st.columns([1, 2, 1], gap="small")
+with c2:
+    st.write('HELLOOO')
 
 class Restaurant:
   def __init__(self, name, image_url, url, review_count, rating, price, address, phone, reviewsum):
