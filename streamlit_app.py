@@ -154,7 +154,6 @@ with c2:
             search(cuisine, results, random.randint(1, 4), location, c)
             if len(restaurantList) == 0:
                 search(cuisine, results, 0, location, c)
-        except:
             try:
                 for i in range(0, results):
                     with arr[i]:
@@ -185,7 +184,9 @@ with c2:
                                 with sc2:
                                     st.write(restaurantList[i].reviewsum)
             except:
-                st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
+                st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')  
+        except:
+           st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
         #test 
                         
                     # st.write(restaurantList[i].name)
