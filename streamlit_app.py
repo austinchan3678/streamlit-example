@@ -176,7 +176,7 @@ with c2:
                                 st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=True)
                             with mc2:
                                 st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=True)
-                            container = st.container(border=false)
+                            container = st.container()
                             with container:
                             # sc1, sc2, sc3 = st.columns([1,8,1])
                             # with sc2:
