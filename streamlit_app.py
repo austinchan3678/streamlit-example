@@ -68,7 +68,7 @@ with c2:
         results = st.number_input("Results", min_value=1, max_value=5, key= "results")
 
     with cost:
-        temp = st.select_slider("Maximum Cost", options=('$', '$$', '$$$', '$$$$'))
+        temp = st.select_slider("Cost", options=('$', '$$', '$$$', '$$$$'))
         cost = len(temp)
     # generate and reset buttons
     if "show_review" not in st.session_state:
@@ -162,11 +162,11 @@ with c2:
                             st.image(restaurantList[i].image_url)
 
                         with col2:
-                            st.header("  " + restaurantList[i].name, divider='gray')
-                            st.text(str(restaurantList[i].rating) + ' :star:   (' + str(restaurantList[i].review_count) + ' reviews)' + '$    -    $' + str(restaurantList[i].price))
-                            #st.write(str(restaurantList[i].rating) + ' :star:   (' + str(restaurantList[i].review_count) + ' reviews)' + '$    -    $' + str(restaurantList[i].price))
-                            st.text(':telephone_receiver:: ' + restaurantList[i].phone + '    -    ' + restaurantList[i].address)
-                            st.write(':telephone_receiver:: ' + restaurantList[i].phone + '    -    ' + restaurantList[i].address)
+                            st.header("⠀⠀" + restaurantList[i].name, divider='gray')
+                            #st.text(str(restaurantList[i].rating) + ' :star:   (' + str(restaurantList[i].review_count) + ' reviews)' + '$    -    $' + str(restaurantList[i].price))
+                            st.write(str(restaurantList[i].rating) + ' :star:   (' + str(restaurantList[i].review_count) + ' reviews)' + '⠀⠀⠀-⠀⠀⠀' + str(restaurantList[i].price))
+                            #st.text(':telephone_receiver:: ' + restaurantList[i].phone + '    -    ' + restaurantList[i].address)
+                            st.write(':telephone_receiver:: ' + restaurantList[i].phone + '⠀⠀⠀-⠀⠀⠀' + restaurantList[i].address)
                             mc1, mc2 = st.columns(2)
                             mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
                             mapsaddr = mapsaddr.replace(" ", "+")
