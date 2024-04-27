@@ -176,9 +176,9 @@ with c2:
                         googlemaps = "https://www.google.com/maps/search/" + mapsaddr
                         applemaps = "http://maps.apple.com/?q=" + mapsaddr
                         with mc1:
-                            st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=False)
+                            st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=True)
                         with mc2:
-                            st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=False)
+                            st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=True)
 
                         container = st.container(border=True)
                         st.write(restaurantList[i].reviewsum)
