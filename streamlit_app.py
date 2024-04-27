@@ -74,14 +74,13 @@ with c2:
     with cost:
         temp = st.select_slider("Cost", options=('$', '$$', '$$$', '$$$$'))
         cost = len(temp)
-    st.divider()
     # generate and reset buttons
     if "show_review" not in st.session_state:
         st.session_state.show_review = False
 
     generate = st.button("Generate", use_container_width = True, on_click = callback)
     reset = st.button("Reset", use_container_width = True, on_click = clear_form)
-
+    st.divider()
     userOffset = 0
 
     GOOGLE_API_KEY='AIzaSyCbZYpjDDZoGwJ5RC7RHwz4v5_6d43LuS8'
@@ -166,8 +165,7 @@ with c2:
                         st.image(restaurantList[i].image_url)
 
                     with col2:
-                        st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name,)
-                        st.divider()
+                        st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name, divider='gray')
                         st.write(restaurantList[i].address)
 
                         mc1, mc2 = st.columns(2)
