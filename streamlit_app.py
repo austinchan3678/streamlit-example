@@ -43,7 +43,7 @@ def clear_form():
 def callback():
 	show_review = True
 
-
+#
 # left_co, cent_co,last_co = st.columns(3)
 # with cent_co:
 #     ima = st.image('https://r74.cooltext.com/rendered/cooltext456508024606712.gif', width=500)
