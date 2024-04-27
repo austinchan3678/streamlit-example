@@ -170,14 +170,15 @@ with c2:
                         st.header(restaurantList[i].name, divider= 'gray')
                         st.write("\n")
                         st.write(restaurantList[i].address)
+                        mc1, mc2 = st.columns(2)
                         mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
                         mapsaddr = mapsaddr.replace(" ", "+")
-                        st.write(mapsaddr)
                         googlemaps = "https://www.google.com/maps/search/" + mapsaddr
                         applemaps = "http://maps.apple.com/?q=" + mapsaddr
-                        st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=False)
-                        st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=False)
-
+                        with mc1:
+                            st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=False)
+                        with mc2:
+                            st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=False)
 
                         container = st.container(border=True)
                         st.write(restaurantList[i].reviewsum)
