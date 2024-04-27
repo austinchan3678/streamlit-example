@@ -9,3 +9,4 @@ bs4
 google.generativeai
 IPython
 pillow
+streamlit_nested_layout

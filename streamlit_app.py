@@ -6,8 +6,7 @@ import requests
 from transformers import pipeline
 from bs4 import BeautifulSoup
 from PIL import Image
-from IPython.display import display
-
+import streamlit_nested_layout
 
 import google.generativeai as genai
 
