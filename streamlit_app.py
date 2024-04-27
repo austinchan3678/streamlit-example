@@ -166,6 +166,8 @@ with c2:
                         st.image(restaurantList[i].image_url)
 
                     with col2:
+                        st.header(restaurantList[i].name)
+                        
                         container = st.container(border=True)
                         st.write(restaurantList[i].reviewsum)
 
