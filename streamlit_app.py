@@ -38,7 +38,7 @@ def clear_form():
 	st.session_state["cuisine"] = ""
 	st.session_state["location"] = ""
 	st.session_state["results"] = 1
-	st.session_state["cost"] = 1
+	st.session_state["cost"] = ""
 
 def callback():
 	show_review = True
@@ -72,7 +72,8 @@ with c2:
         results = st.number_input("Results", min_value=1, max_value=5, key= "results")
 
     with cost:
-        cost = st.number_input("Cost", min_value=1, max_value=4, key= "cost")
+        temp = st.select_slider("Cost", options=('$', '$$', '$$$', '$$$$'))
+        cost = temp.length()
 
     # generate and reset buttons
     if "show_review" not in st.session_state:
@@ -165,7 +166,7 @@ with c2:
                         st.image(restaurantList[i].image_url)
 
                     with col2:
-                        st.header(str(restaurantList[i].rating) + ':star:' + '  -  ' + restaurantList[i].name, divider= 'gray')
+                        st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name, divider= 'gray')
 
                         st.write(restaurantList[i].address)
 
