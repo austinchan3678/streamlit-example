@@ -156,12 +156,13 @@ with c2:
 
 
             placeholder = st.empty()
-
+            with placeholder:
             # Replace the placeholder with some text:
-            placeholder.image("loading.gif")
+                c1, c2, c3 = st.columns([1,3,1])
+                with c2:
+                    st.image("loading.gif")
 
-
-            with st.spinner('Wait for it...'):
+            with placeholder:
                 search(cuisine, results, 0, location, cost)
                 for i in range(0, results):
                     with arr[i]:
@@ -191,7 +192,7 @@ with c2:
                                 sc1, sc2, sc3 = st.columns([1,20,1])
                                 with sc2:
                                     st.write(restaurantList[i].reviewsum)
-                placeholder.empty()
+            placeholder.empty()
 
         except:
            st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
