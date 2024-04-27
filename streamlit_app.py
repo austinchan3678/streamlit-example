@@ -143,7 +143,7 @@ with c2:
 
         for i in business_data['businesses']:
             reviewsum = getReviews(i['url'],i['name'])
-            restaurantList.append(Restaurant(i['name'], i['image_url'], i['url'], i['review_count'], i['rating'], i['price'], i['location']['address1'], i['phone'], reviewsum))
+            restaurantList.append(Restaurant(i['name'], i['image_url'], i['url'], i['review_count'], i['rating'], i['price'], i['location']['address1'] + " " + i['location']['city'], i['phone'], reviewsum))
 
     # reviews
     review1 = st.container(border = True)
