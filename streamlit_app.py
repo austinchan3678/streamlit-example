@@ -52,7 +52,7 @@ def callback():
 c1, c2, c3 = st.columns([1, 4, 1], gap="small")
 with c2:
 
-    st.title('YumSum!')
+    st.title('YumSum')
 
     header = st.container()
     cuisine, location, results, cost = st.columns(4)
@@ -64,16 +64,16 @@ with c2:
 
     # text input 
     with cuisine:
-        cuisine = st.text_input("cuisine", key="cuisine")
+        cuisine = st.text_input("Cuisine", key="cuisine")
 
     with location:
-        location = st.text_input("location", key="location")
+        location = st.text_input("Location", key="location")
 
     with results:
-        results = st.number_input("results", min_value=1, max_value=5, key= "results")
+        results = st.number_input("Results", min_value=1, max_value=5, key= "results")
 
     with cost:
-        cost = st.number_input("cost", min_value=1, max_value=4, key= "cost")
+        cost = st.number_input("Cost", min_value=1, max_value=4, key= "cost")
 
     # generate and reset buttons
     if "show_review" not in st.session_state:
