@@ -153,40 +153,39 @@ with c2:
     if generate or st.session_state.show_review:
         try:
             search(cuisine, results, 0, location, cost)
+            for i in range(0, results):
+                with arr[i]:
+                    with st.container(border=True):
+                        #st.header(restaurantList[i].name)
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            st.image(restaurantList[i].image_url)
+
+                        with col2:
+                            st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name, divider='gray')
+                            st.write(restaurantList[i].address)
+
+                            mc1, mc2 = st.columns(2)
+                            mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
+                            mapsaddr = mapsaddr.replace(" ", "+")
+                            mapsaddr = mapsaddr.replace(",", "")
+                            googlemaps = "https://www.google.com/maps/search/" + mapsaddr
+                            applemaps = "http://maps.apple.com/?q=" + mapsaddr
+                            with mc1:
+                                st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=True)
+                            with mc2:
+                                st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=True)
+                            st.divider()
+                            container = st.container(border=True)
+                            sc1, sc2, sc3 = st.columns([1,6,1])
+                            with sc2:
+                                st.write(restaurantList[i].reviewsum)
         except:
             st.write('error! reset')
-        for i in range(0, results):
-            with arr[i]:
-                with st.container(border=True):
-                    #st.header(restaurantList[i].name)
-                    col1, col2 = st.columns(2)
-                    with col1:
-                        st.image(restaurantList[i].image_url)
-
-                    with col2:
-                        st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name, divider='gray')
-                        st.write(restaurantList[i].address)
-
-                        mc1, mc2 = st.columns(2)
-                        mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
-                        mapsaddr = mapsaddr.replace(" ", "+")
-                        mapsaddr = mapsaddr.replace(",", "")
-                        googlemaps = "https://www.google.com/maps/search/" + mapsaddr
-                        applemaps = "http://maps.apple.com/?q=" + mapsaddr
-                        with mc1:
-                            st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=True)
-                        with mc2:
-                            st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=True)
-                        st.divider()
-                        container = st.container(border=True)
-                        sc1, sc2, sc3 = st.columns([1,6,1])
-                        with sc2:
-                            st.write(restaurantList[i].reviewsum)
-
-    #test 
-                    
-                # st.write(restaurantList[i].name)
-                # st.image(restaurantList[i].image_url, width=200)
-                # with st.expander("Review"):
-                # 	st.write(restaurantList[i].reviewsum)
+        #test 
+                        
+                    # st.write(restaurantList[i].name)
+                    # st.image(restaurantList[i].image_url, width=200)
+                    # with st.expander("Review"):
+                    # 	st.write(restaurantList[i].reviewsum)
 
