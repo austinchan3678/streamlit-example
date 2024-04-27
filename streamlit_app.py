@@ -42,7 +42,7 @@ def callback():
 c1, c2, c3 = st.columns([1, 4, 1], gap="small")
 with c2:
     st.image('yumsum(3).png')
-    st.write('What is YumSum? Its a tool that will conveniently recommend restaurants for you, give key information, and summarize their reviews for you! Recognizing most terms, like "Burrito" or "Chicken" or "Japanese Food" at "Goleta" or "NYC" or "Hawaii", YumSum is the easiest and quickest way to choose what to eat!')
+    st.write('What is YumSum? Its a tool that conveniently recommends restaurants for you, gives key details, and summarize its reviews for you! Recognizing most terms, like "Burrito", "Chicken", or "Japanese Food" at "Goleta", "NYC", or "Hawaii", YumSum is the easiest and quickest way to choose what to eat!')
     st.divider()
     header = st.container()
     cuisine, location, results, cost = st.columns(4)
