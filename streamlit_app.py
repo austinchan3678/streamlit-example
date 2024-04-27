@@ -167,9 +167,9 @@ with c2:
                             with pc1:
                                 st.write(str(restaurantList[i].rating) + ' :star:')
                             with pc2:
-                                st.write("     " + str(restaurantList[i].price))
-
-                            st.write(restaurantList[i].address + '  -  ' + str(restaurantList[i].price))
+#                                st.write("     " + str(restaurantList[i].price))
+                                st.markdown(':green[str(restaurantList[i].price]')
+                            st.write(restaurantList[i].address)
 
                             mc1, mc2 = st.columns(2)
                             mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
