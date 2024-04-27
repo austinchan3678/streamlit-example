@@ -1,11 +1,7 @@
-import altair as alt
-import numpy as np
-import pandas as pd
 import streamlit as st
 import requests
 from transformers import pipeline
 from bs4 import BeautifulSoup
-from PIL import Image
 import streamlit_nested_layout
 
 import google.generativeai as genai
