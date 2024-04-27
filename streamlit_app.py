@@ -144,7 +144,7 @@ with c2:
                     'offset': offset,
                     'radius': 16093, # 10 miles already set
                     'location': location,
-                    'price': price
+                    'price': 1
                     }
         response = requests.get(url = ENDPOINT,
                                 params = PARAMETERS,
