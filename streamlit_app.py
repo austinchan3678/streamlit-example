@@ -68,7 +68,7 @@ with c2:
         results = st.number_input("Results", min_value=1, max_value=5, key= "results")
 
     with cost:
-        temp = st.select_slider("Cost", options=('$', '$$', '$$$', '$$$$'))
+        temp = st.select_slider("Maximum Cost", options=('$', '$$', '$$$', '$$$$'))
         cost = len(temp)
     # generate and reset buttons
     if "show_review" not in st.session_state:
@@ -151,7 +151,10 @@ with c2:
 
     # if generate is pressed
     if generate or st.session_state.show_review:
-        search(cuisine, results, 0, location, cost)
+        try:
+            search(cuisine, results, 0, location, cost)
+        except:
+            st.write('error! reset')
         for i in range(0, results):
             with arr[i]:
                 with st.container(border=True):
