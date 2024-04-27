@@ -174,9 +174,10 @@ with c2:
                         mapsaddr = mapsaddr.replace(" ", "+")
                         st.write(mapsaddr)
                         googlemaps = "https://www.google.com/maps/search/" + mapsaddr
-                        #phresh+teas+5599+hollister+avenue/
-                        #https://www.google.com/maps/search/phresh+teas+5599+hollister+avenue/
+                        applemaps = "http://maps.apple.com/?q=" + mapsaddr
                         st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=False)
+                        st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=False)
+
 
                         container = st.container(border=True)
                         st.write(restaurantList[i].reviewsum)
