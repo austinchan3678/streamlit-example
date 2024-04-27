@@ -44,12 +44,12 @@ def callback():
 	show_review = True
 
 
-left_co, cent_co,last_co = st.columns(3)
-with cent_co:
-    ima = st.image('https://r74.cooltext.com/rendered/cooltext456508024606712.gif', width=500)
-    st.image('https://r74.cooltext.com/rendered/cooltext456508024606712.gif', width=500)
+# left_co, cent_co,last_co = st.columns(3)
+# with cent_co:
+#     ima = st.image('https://r74.cooltext.com/rendered/cooltext456508024606712.gif', width=500)
+#     st.image('https://r74.cooltext.com/rendered/cooltext456508024606712.gif', width=500)
 
-
+st.title('YumSum!')
 
 header = st.container()
 cuisine, location, results, cost = st.columns(4)
