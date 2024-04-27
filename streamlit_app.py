@@ -70,7 +70,6 @@ with c2:
     with cost:
         
         temp = st.select_slider("Cost", options=('$', '$$', '$$$', '$$$$'),value=('$','$$'))
-        cost = len(temp)
         costarray = []
         if cost == 1:
             costarray.append(1)
@@ -169,7 +168,7 @@ with c2:
     # if generate is pressed
     if generate or st.session_state.show_review:
         try:
-            search(cuisine, results, 0, location, cost)
+            search(cuisine, results, 0, location, costarray)
             for i in range(0, results):
                 with arr[i]:
                     with st.container(border=True):
