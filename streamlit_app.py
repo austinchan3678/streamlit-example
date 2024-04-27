@@ -173,7 +173,7 @@ with c2:
                                 st.markdown(f':green[{dollars}]')
                             with pc4:
                                 st.write(restaurantList[i].phone)
-                            st.write(restaurantList[i].address)
+                            st.subheader(restaurantList[i].address)
                             mc1, mc2 = st.columns(2)
                             mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
                             mapsaddr = mapsaddr.replace(" ", "+")
