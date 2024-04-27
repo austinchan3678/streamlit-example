@@ -39,7 +39,7 @@ def clear_form():
 def loading():
     placeholder = st.empty()
     with placeholder:
-        c1, c2, c3 = st.columns([3,1,3])
+        c1, c2, c3 = st.columns([5,1,3])
         with c2:
             st.image("loading.gif")
 
@@ -57,6 +57,7 @@ def notloading():
     # if generate is pressed
     if generate or st.session_state.show_review:
         try:
+            show_review = False
             placeholder = st.empty()
             with placeholder:
                 search(cuisine, results, 0, location, cost)
