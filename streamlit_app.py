@@ -124,7 +124,7 @@ with c2:
                                 headers = HEADERS)
 
         business_data = response.json()
-
+        restaurantList.clear()
         for i in business_data['businesses']:
             reviewsum = getReviews(i['url'],i['name'])
             restaurantList.append(Restaurant(i['name'], i['image_url'], i['url'], i['review_count'], i['rating'], i['price'], i['location']['address1'] + ", " + i['location']['city'], i['phone'], reviewsum))
@@ -141,7 +141,10 @@ with c2:
     # if generate is pressed
     if generate or st.session_state.show_review:
         try:
-            search(cuisine, results, random.randint(0, 10), location, cost)
+            search(cuisine, results, random.randint(1, 4), location, cost)
+            if len(restaurantList) == 0:
+                search(cuisine, results, 0, location, cost)
+
             for i in range(0, results):
                 with arr[i]:
                     with st.container(border=True):
