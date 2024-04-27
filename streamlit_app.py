@@ -140,11 +140,11 @@ with c2:
 
     # if generate is pressed
     if generate or st.session_state.show_review:
-        try:
-            search(cuisine, results, random.randint(1, 4), location, cost)
-            if len(restaurantList) == 0:
-                search(cuisine, results, 0, location, cost)
 
+        search(cuisine, results, random.randint(1, 4), location, cost)
+        if len(restaurantList) == 0:
+            search(cuisine, results, 0, location, cost)
+        try:
             for i in range(0, results):
                 with arr[i]:
                     with st.container(border=True):
