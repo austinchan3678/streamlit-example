@@ -51,7 +51,7 @@ def callback():
 
 c1, c2, c3 = st.columns([1, 4, 1], gap="small")
 with c2:
-    st.image('/workspaces/streamlit-example/yumsum.png')
+    st.image('yumsum.png')
 
     header = st.container()
     cuisine, location, results, cost = st.columns(4)
