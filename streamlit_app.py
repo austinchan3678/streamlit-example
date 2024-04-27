@@ -81,7 +81,7 @@ with c2:
     generate = st.button("Generate", use_container_width = True, on_click = callback)
     reset = st.button("Reset", use_container_width = True, on_click = clear_form)
     st.divider()
-    userOffset = 0
+    userOffset = 1
 
     GOOGLE_API_KEY='AIzaSyCbZYpjDDZoGwJ5RC7RHwz4v5_6d43LuS8'
 
