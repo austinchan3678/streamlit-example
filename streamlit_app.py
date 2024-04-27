@@ -143,7 +143,7 @@ with c2:
 
         for i in business_data['businesses']:
             reviewsum = getReviews(i['url'],i['name'])
-            restaurantList.append(Restaurant(i['name'], i['image_url'], i['url'], i['review_count'], i['rating'], i['price'], i['location']['address1'] + " " + i['location']['city'], i['phone'], reviewsum))
+            restaurantList.append(Restaurant(i['name'], i['image_url'], i['url'], i['review_count'], i['rating'], i['price'], i['location']['address1'] + ", " + i['location']['city'], i['phone'], reviewsum))
 
     # reviews
     review1 = st.container(border = True)
@@ -172,6 +172,7 @@ with c2:
                         mc1, mc2 = st.columns(2)
                         mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
                         mapsaddr = mapsaddr.replace(" ", "+")
+                        mapsaddr = mapsaddr.replace(",", "")
                         googlemaps = "https://www.google.com/maps/search/" + mapsaddr
                         applemaps = "http://maps.apple.com/?q=" + mapsaddr
                         with mc1:
