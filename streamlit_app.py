@@ -52,7 +52,7 @@ def callback():
 c1, c2, c3 = st.columns([1, 4, 1], gap="small")
 with c2:
     st.image('yumsum(3).png')
-
+    st.divider()
     header = st.container()
     cuisine, location, results, cost = st.columns(4)
 
@@ -167,8 +167,8 @@ with c2:
                         st.image(restaurantList[i].image_url)
 
                     with col2:
-                        st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name, divider= 'gray')
-
+                        st.header(str(restaurantList[i].rating) + ' :star:' + '  -  ' + restaurantList[i].name,)
+                        st.divider()
                         st.write(restaurantList[i].address)
 
                         mc1, mc2 = st.columns(2)
@@ -181,7 +181,7 @@ with c2:
                             st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=True)
                         with mc2:
                             st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=True)
-
+                        st.divider()
                         container = st.container(border=True)
                         st.write(restaurantList[i].reviewsum)
 
