@@ -152,6 +152,15 @@ with c2:
     # if generate is pressed
     if generate or st.session_state.show_review:
         try:
+            
+
+
+            placeholder = st.empty()
+
+            # Replace the placeholder with some text:
+            placeholder.image("loading.gif")
+
+
             with st.spinner('Wait for it...'):
                 search(cuisine, results, 0, location, cost)
                 for i in range(0, results):
@@ -182,6 +191,8 @@ with c2:
                                 sc1, sc2, sc3 = st.columns([1,20,1])
                                 with sc2:
                                     st.write(restaurantList[i].reviewsum)
+                placeholder.empty()
+
         except:
            st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
         #test 
