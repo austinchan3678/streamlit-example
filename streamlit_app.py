@@ -43,14 +43,14 @@ c1, c2, c3 = st.columns([1, 4, 1], gap="small")
 with c2:
     st.image('yumsum(3).png')
     st.write("\n")
-    st.write('What is YumSum? Its a tool that conveniently recommends restaurants for you, gives key details, and summarize its reviews for you! Recognizing most terms, like "Burrito", "Chicken", or "Japanese Food" at "Goleta", "NYC", or "Hawaii", YumSum is the easiest and quickest way to choose what to eat!')
+    st.write('What is YumSum? Its a tool that conveniently recommends restaurants for you, gives key details, and summarize its reviews for you! Recognizing most terms, like "AYCE BBQ", "Boba", or "Japanese Food" at "Goleta", "NYC", or "Hawaii", YumSum is the easiest and quickest way to choose what to eat!')
     st.divider()
     header = st.container()
     cuisine, location, results, cost = st.columns(4)
 
     # text input 
     with cuisine:
-        cuisine = st.text_input("Cuisine", key="cuisine")
+        cuisine = st.text_input("Cuisine or Type of Food", key="cuisine")
 
     with location:
         location = st.text_input("Location", key="location")
