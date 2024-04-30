@@ -3,7 +3,6 @@ import requests
 from transformers import pipeline
 from bs4 import BeautifulSoup
 import streamlit_nested_layout
-import random
 import google.generativeai as genai
 
 from IPython.display import display
@@ -151,7 +150,7 @@ with c2:
     # if generate is pressed
     if generate or st.session_state.show_review:
         try:
-            search(cuisine, results, random.randint(1, 4), location, c)
+            search(cuisine, results, 0, location, c)
             if len(restaurantList) == 0:
                 search(cuisine, results, 0, location, c)
             try:
