@@ -13,7 +13,6 @@ from IPython.display import Markdown
 # """
 
 st.set_page_config(layout = "wide")
-random.seed()
 
 class Restaurant:
   def __init__(self, name, image_url, url, review_count, rating, price, address, phone, reviewsum):
