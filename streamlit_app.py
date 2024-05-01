@@ -107,7 +107,7 @@ with c2:
             if lang_attribute != 'en':
                 continue
             bigString += text_content
-        st.write(len(bigString.split()))
+        #st.write(len(bigString.split()))
         summarizedReview = summarize(bigString,name)
         return summarizedReview
 
@@ -172,7 +172,7 @@ with c2:
                                 sc1, sc2, sc3 = st.columns([1,20,1])
                                 with sc2:
                                     st.write(restaurantList[i].reviewsum)
-                                    st.write(len(restaurantList[i].reviewsum.split()))
+                                    #st.write(len(restaurantList[i].reviewsum.split()))
 
             except:
                 st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')  
