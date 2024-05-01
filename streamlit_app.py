@@ -1,12 +1,8 @@
 import streamlit as st
 import requests
-from transformers import pipeline
 from bs4 import BeautifulSoup
 import streamlit_nested_layout
 import google.generativeai as genai
-
-from IPython.display import display
-from IPython.display import Markdown
 # """
 # # YumSum!!
 # In the meantime, below is an example of what you can do with just a few lines of code:
