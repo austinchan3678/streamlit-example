@@ -112,7 +112,7 @@ with c2:
             lang_attribute = span.attrs.get('lang', None)
             if lang_attribute != 'en':
                 continue
-            bigString += text_content``
+            bigString += text_content
         summarizedReview = summarize(bigString,name)
         return summarizedReview
 
