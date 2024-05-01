@@ -9,6 +9,10 @@ import google.generativeai as genai
 # """
 
 st.set_page_config(layout = "wide")
+s = 'I am having a very nice day.'
+st.write(len(s.split()))
+
+
 
 class Restaurant:
   def __init__(self, name, image_url, url, review_count, rating, price, address, phone, reviewsum):
@@ -21,8 +25,6 @@ class Restaurant:
     self.address = address
     self.phone = phone
     self.reviewsum = reviewsum
-
-
 
 def clear_form():
 	st.session_state["cuisine"] = ""
