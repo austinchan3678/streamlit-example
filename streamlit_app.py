@@ -142,9 +142,9 @@ with c2:
 
     # if generate is pressed
     if generate or st.session_state.show_review:
-        try:
+        #try:
             search(cuisine, results, 0, location, c)
-            try:
+            #try:
                 for i in range(0, results):
                     with arr[i]:
                         with st.container(border=True):
@@ -173,10 +173,10 @@ with c2:
                                     st.write(restaurantList[i].reviewsum)
                                     #st.write(len(restaurantList[i].reviewsum.split()))
 
-            except:
-                st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')  
-        except:
-           st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
+            #except:
+            #    st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')  
+        #except:
+        #   st.write('Uh oh! Your search gave no results. Press reset, change your entries, and try again! ')
         #test 
                         
                     # st.write(restaurantList[i].name)
