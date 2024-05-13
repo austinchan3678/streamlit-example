@@ -70,14 +70,13 @@ with c2:
     st.divider()
     userOffset = 1
 
-    GOOGLE_API_KEY='AIzaSyCbZYpjDDZoGwJ5RC7RHwz4v5_6d43LuS8'
+    GOOGLE_API_KEY=st.secrets["key1"]
 
     genai.configure(api_key=GOOGLE_API_KEY)
 
 
     # -------- #
-    API_KEY = '1LmNDpXKm1aNSwK2HCThD4C5v_cQtVxpEio3smS4i5G4-hHbI1DQiFU6Ysa6_ymVvpKIkTCNCGHT1mHKDMGyLh1GHhWklAlFTGBtBx6tm8F8BlNow6F-Z9pEmMrOZXYx'
-    st.write(st.secrets["key1"])
+    API_KEY = st.secrets["key2"]
 
     ENDPOINT = 'https://api.yelp.com/v3/businesses/search'
     HEADERS = {'Authorization': 'bearer %s' % API_KEY}
