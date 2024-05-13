@@ -124,7 +124,9 @@ with c2:
         response = requests.get(url = ENDPOINT,
                                 params = PARAMETERS,
                                 headers = HEADERS)
-
+        st.write("TEST")
+        st.write(term + limit + offset + location + price)
+        st.write(response.json())
         business_data = response.json()
         restaurantList.clear()
         for i in business_data['businesses']:
