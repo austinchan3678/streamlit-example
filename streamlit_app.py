@@ -145,32 +145,32 @@ with c2:
         #try:
             search(cuisine, results, 0, location, c)
             #try:
-                for i in range(0, results):
-                    with arr[i]:
-                        with st.container(border=True):
-                            #st.header(restaurantList[i].name)
-                            col1, col2 = st.columns(2)
-                            with col1:
-                                st.image(restaurantList[i].image_url)
+            for i in range(0, results):
+                with arr[i]:
+                    with st.container(border=True):
+                        #st.header(restaurantList[i].name)
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            st.image(restaurantList[i].image_url)
 
-                            with col2:
-                                st.header("⠀" + restaurantList[i].name, divider='gray')
-                                st.write("⠀⠀" + str(restaurantList[i].rating) + ' :star:⠀(' + str(restaurantList[i].review_count) + ' reviews)' + '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀' + str(restaurantList[i].price))
-                                st.write("⠀⠀" + restaurantList[i].phone + ', ' + restaurantList[i].address)
-                                mc1, mc2 = st.columns(2)
-                                mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
-                                mapsaddr = mapsaddr.replace(" ", "+")
-                                mapsaddr = mapsaddr.replace(",", "")
-                                googlemaps = "https://www.google.com/maps/search/" + mapsaddr
-                                applemaps = "http://maps.apple.com/?q=" + mapsaddr
-                                with mc1:
-                                    st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=True)
-                                with mc2:
-                                    st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=True)
+                        with col2:
+                            st.header("⠀" + restaurantList[i].name, divider='gray')
+                            st.write("⠀⠀" + str(restaurantList[i].rating) + ' :star:⠀(' + str(restaurantList[i].review_count) + ' reviews)' + '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀' + str(restaurantList[i].price))
+                            st.write("⠀⠀" + restaurantList[i].phone + ', ' + restaurantList[i].address)
+                            mc1, mc2 = st.columns(2)
+                            mapsaddr = restaurantList[i].name + "+" + restaurantList[i].address
+                            mapsaddr = mapsaddr.replace(" ", "+")
+                            mapsaddr = mapsaddr.replace(",", "")
+                            googlemaps = "https://www.google.com/maps/search/" + mapsaddr
+                            applemaps = "http://maps.apple.com/?q=" + mapsaddr
+                            with mc1:
+                                st.link_button("Open in Google Maps", googlemaps, help=None, type="secondary", disabled=False, use_container_width=True)
+                            with mc2:
+                                st.link_button("Open in Apple Maps", applemaps, help=None, type="secondary", disabled=False, use_container_width=True)
 
-                                sc1, sc2, sc3 = st.columns([1,20,1])
-                                with sc2:
-                                    st.write(restaurantList[i].reviewsum)
+                            sc1, sc2, sc3 = st.columns([1,20,1])
+                            with sc2:
+                                st.write(restaurantList[i].reviewsum)
                                     #st.write(len(restaurantList[i].reviewsum.split()))
 
             #except:
