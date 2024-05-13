@@ -125,6 +125,7 @@ with c2:
                                 params = PARAMETERS,
                                 headers = HEADERS)
         st.write("TEST")
+        st.write(response.status_code)
         st.write(term)
         st.write(limit)
         st.write(offset)
