@@ -131,8 +131,6 @@ with c2:
         st.write(offset)
         st.write(location)
         st.write(price)
-        st.write(response['error'])
-        st.write(response.json())
         business_data = response.json()
         restaurantList.clear()
         for i in business_data['businesses']:
