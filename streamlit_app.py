@@ -125,7 +125,6 @@ with c2:
         response = requests.get(url = ENDPOINT,
                                 params = PARAMETERS,
                                 headers = HEADERS)
-        st.write("TEST")
         st.write(response.status_code)
         st.write(term)
         st.write(limit)
