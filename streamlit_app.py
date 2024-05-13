@@ -125,7 +125,7 @@ with c2:
                                 params = PARAMETERS,
                                 headers = HEADERS)
         st.write("TEST")
-        st.write(term + limit + offset + location + price)
+        st.write((str)term + (str)(limit) + (str)offset + (str)location + (str)price)
         st.write(response.json())
         business_data = response.json()
         restaurantList.clear()
