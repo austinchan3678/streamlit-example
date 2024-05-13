@@ -77,6 +77,7 @@ with c2:
 
     # -------- #
     API_KEY = st.secrets["key2"]
+    API_KEY = 'bv85JtLCUJWWXAUCfIZjngMeG3q6riGsX6_4ZPLSoviITxW5DcT84BQ63Ujhms-ET1BCXTHuDrVLf_WvikFvzea7RzNtUlBAkL-s0iTWq2-VgVxI4bafor70CWZBZnYx'
 
     ENDPOINT = 'https://api.yelp.com/v3/businesses/search'
     HEADERS = {'Authorization': 'bearer %s' % API_KEY}
